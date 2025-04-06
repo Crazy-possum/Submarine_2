@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,23 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PointsViewer _pointsViewer;
     public bool IsMoveAvalible;
+    private Action _onPlayerEnterTrigger;
+
+    public Action OnPlayerEnterTrigger { get => _onPlayerEnterTrigger; set => _onPlayerEnterTrigger = value; }
+
 
     private void Update()
     {
         PlayerMovement();
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            OnPlayerEnterTrigger?.Invoke();
+            Debug.Log(1);
+        }
     }
 
     private void PlayerMovement()

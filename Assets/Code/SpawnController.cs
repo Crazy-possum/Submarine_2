@@ -15,7 +15,7 @@ public class SpawnController : MonoBehaviour
 
     public List<Transform> PointsForGroupTransform;
     public Vector2 SpawnPositionsVector;
-    public int CurrentPointIndex;
+    public GameObject Object;
 
     private TransformSercher _transformSercher;
     private GameObject _groupGameObject;
@@ -29,7 +29,6 @@ public class SpawnController : MonoBehaviour
         _groupGameObject = pointsGroup.gameObject;
 
         PointsViewer.Instance.AddPointsGroup(pointsGroup);
-        CurrentPointIndex = 5;
     }
 
     private void TakeSpawnPointPositions()
@@ -79,6 +78,8 @@ public class SpawnController : MonoBehaviour
         {
             GameObject sceneGObject = GameObject.Instantiate(_object, SpawnPositionsVector, Quaternion.identity, _groupGameObject.transform);
             GameObject pointsGroup = sceneGObject.GetComponent<GameObject>();
+
+            Object = pointsGroup.gameObject;
         }
 
         SpawnPositionsVector = Vector2.zero;
