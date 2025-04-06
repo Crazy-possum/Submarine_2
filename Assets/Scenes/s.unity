@@ -786,6 +786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pointsViewer: {fileID: 1985524511}
   _rootTransform: {fileID: 1168227850}
+  _objectRootTransform: {fileID: 0}
   _pointsGroup: {fileID: 177441353602321243, guid: 6bcd96d71cde23b40b43abd63a840f04, type: 3}
   _object: {fileID: 7826577287467766988, guid: f586ab3d2a6a5ab4d80fc7c5ac04d1aa, type: 3}
   PointsForGroupTransform:
@@ -912,7 +913,7 @@ Transform:
   m_GameObject: {fileID: 1357648832}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.478, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1058,7 +1059,7 @@ Transform:
   m_GameObject: {fileID: 1560800982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -45,24 +45,40 @@ public class AutoMovement : MonoBehaviour
             List<PointsGroup> groupsToRemove = new List<PointsGroup>();
             foreach (PointsGroup groups in _pointsGroups)
             {
-                Debug.Log(_spawnController.CurrentPointIndex);
-                groups.transform.position = _pointsForGroupTransforms[_spawnController.CurrentPointIndex - 1].transform.position;
-                _spawnController.CurrentPointIndex -= 1;
-                Debug.Log(_spawnController.CurrentPointIndex);
-
-                //if (groups.transform.position == _pointsForGroupTransforms[0].transform.position)
-                if (_spawnController.CurrentPointIndex == 0)
+                if (groups.transform.position == _pointsForGroupTransforms[5].transform.position)
+                {
+                    groups.transform.position = _pointsForGroupTransforms[4].transform.position;
+                }
+                else if (groups.transform.position == _pointsForGroupTransforms[4].transform.position)
+                {
+                    groups.transform.position = _pointsForGroupTransforms[3].transform.position;
+                }
+                else if (groups.transform.position == _pointsForGroupTransforms[3].transform.position)
+                {
+                    groups.transform.position = _pointsForGroupTransforms[2].transform.position;
+                }
+                else if (groups.transform.position == _pointsForGroupTransforms[2].transform.position)
+                {
+                    groups.transform.position = _pointsForGroupTransforms[1].transform.position;
+                }
+                else if (groups.transform.position == _pointsForGroupTransforms[1].transform.position)
+                {
+                    groups.transform.position = _pointsForGroupTransforms[0].transform.position;
+                }
+                else if (groups.transform.position == _pointsForGroupTransforms[0].transform.position)
                 {
                     Destroy(groups.gameObject);
                     groupsToRemove.Add(groups);
                 }
             }
+
+            _spawnController.SpawnPointsGroup();
+
             foreach (PointsGroup groups in groupsToRemove)
             {
                 _pointsGroups.Remove(groups);
             }
 
-            _spawnController.SpawnPointsGroup();
             _spawnController.SpawnObjects();
 
             _divingTimer.StartCountdown();

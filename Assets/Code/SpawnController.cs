@@ -39,7 +39,7 @@ public class SpawnController : MonoBehaviour
         System.Random randomForGroup = new System.Random();
         int SpawnChance = randomForGroup.Next(0, 9);
 
-        if (SpawnChance < 5)
+        if (SpawnChance < 7)
         {
             _transformSercher = _groupGameObject.GetComponent<TransformSercher>();
 
