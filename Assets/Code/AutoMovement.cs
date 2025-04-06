@@ -42,18 +42,16 @@ public class AutoMovement : MonoBehaviour
         {
             _divingTimer.StopCountdown();
 
-            _spawnController.SpawnPointsGroup();
-
             List<PointsGroup> groupsToRemove = new List<PointsGroup>();
             foreach (PointsGroup groups in _pointsGroups)
             {
-                if (_pointsGroups.Count != 1)
-                {
-                    groups.transform.position = _pointsForGroupTransforms[_spawnController.CurrentPointIndex - 1].transform.position;
-                    _spawnController.CurrentPointIndex -= 1;
-                }
+                Debug.Log(_spawnController.CurrentPointIndex);
+                groups.transform.position = _pointsForGroupTransforms[_spawnController.CurrentPointIndex - 1].transform.position;
+                _spawnController.CurrentPointIndex -= 1;
+                Debug.Log(_spawnController.CurrentPointIndex);
 
-                if (groups.transform.position == _pointsForGroupTransforms[0].transform.position)
+                //if (groups.transform.position == _pointsForGroupTransforms[0].transform.position)
+                if (_spawnController.CurrentPointIndex == 0)
                 {
                     Destroy(groups.gameObject);
                     groupsToRemove.Add(groups);
@@ -63,6 +61,9 @@ public class AutoMovement : MonoBehaviour
             {
                 _pointsGroups.Remove(groups);
             }
+
+            _spawnController.SpawnPointsGroup();
+            _spawnController.SpawnObjects();
 
             _divingTimer.StartCountdown();
             _playerController.IsMoveAvalible = true;
