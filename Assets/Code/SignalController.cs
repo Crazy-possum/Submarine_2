@@ -6,22 +6,24 @@ using UnityEngine;
 public class SignalController : MonoBehaviour
 {
     [SerializeField] private SpawnController _spawnController;
-    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioSource _bonusAudioSource;
+    [SerializeField] private AudioSource _obstacleAudioSource;
 
     [SerializeField] private AudioClip _audioClipBonus;
     [SerializeField] private AudioClip _audioClipObstacle;
 
     private void Start()
     {
-        _audioSource = _audioSource.GetComponent<AudioSource>();
+        _bonusAudioSource = _bonusAudioSource.GetComponent<AudioSource>();
+        _obstacleAudioSource = _obstacleAudioSource.GetComponent<AudioSource>();
     }
 
     public void PlayBonusSound()
     {
-        _audioSource.PlayOneShot((AudioClip)Resources.Load("Audio/BonusSound"));
+        _bonusAudioSource.PlayOneShot((AudioClip)Resources.Load("Audio/BonusSound"));
     }   
     public void PlayObstacleSound()
     {
-        _audioSource.PlayOneShot((AudioClip)Resources.Load("Audio/ObstacleSound"));
+        _obstacleAudioSource.PlayOneShot((AudioClip)Resources.Load("Audio/ObstacleSound"));
     }
 }

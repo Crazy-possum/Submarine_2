@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class AutoMovement : MonoBehaviour
 {
+    [SerializeField] private RitmTimerScript _timerScript;
     [SerializeField] private PointsViewer _pointsViewer;
     [SerializeField] private MetreController _metreController;
     [SerializeField] private PlayerBehavior _playerBehavior;
@@ -20,6 +21,7 @@ public class AutoMovement : MonoBehaviour
     private TMP_Text _metrText;
     private Timer _divingTimer;
     private bool _maxTimerValue;
+    private float _musicTimerValue;
     private float _sliderMaxValue;
     private float _sliderValue;
     private float _transperency = 0.4f;
@@ -29,6 +31,7 @@ public class AutoMovement : MonoBehaviour
 
     private void Start()
     {
+        _musicTimerValue = _timerScript.MusicTimerValue;
         _pointsGroups = PointsViewer.Instance.Points;
         _pointsForGroupTransforms = _spawnController.PointsForGroupTransform;
 
@@ -45,6 +48,7 @@ public class AutoMovement : MonoBehaviour
         _sliderMaxValue = _divingTimer.MaxTimerValue;
         _timerSlider.value = _sliderValue;
         _timerSlider.maxValue = _sliderMaxValue;
+        _musicTimerValue = _timerScript.MusicTimerValue;
 
         _maxTimerValue = _divingTimer.ReachingTimerMaxValue;
         _pointsGroups = PointsViewer.Instance.Points;
@@ -105,19 +109,47 @@ public class AutoMovement : MonoBehaviour
 
             Color newColor = new Color(_darkerSpriteRenderer.color.r, _darkerSpriteRenderer.color.g, _darkerSpriteRenderer.color.b, _transperency);
             _darkerSpriteRenderer.color = newColor;
-            
-            
-            if (_divingTimer.MaxTimerValue > 1)
+
+
+            if (_musicTimerValue <= 22)
             {
-                _divingTimer.MaxTimerValue -= 0.03f;
+                _divingTimer.MaxTimerValue = 2f;
             }
-            else if (_divingTimer.MaxTimerValue > 0.6)
+            else if (_musicTimerValue <= 34)
             {
-                _divingTimer.MaxTimerValue -= 0.01f;
+                _divingTimer.MaxTimerValue = 1.7f;
             }
-            else if (_divingTimer.MaxTimerValue > 0.3)
+            else if (_musicTimerValue <= 39)
             {
-                _divingTimer.MaxTimerValue -= 0.008f;
+                _divingTimer.MaxTimerValue = 1.3f;
+            }
+            else if (_musicTimerValue <= 45)
+            {
+                _divingTimer.MaxTimerValue = 1.1f;
+            }
+            else if (_musicTimerValue <= 88)
+            {
+                _divingTimer.MaxTimerValue = 0.6f;
+            }
+            else if (_musicTimerValue <= 132)
+            {
+                _divingTimer.MaxTimerValue = 0.7f;
+            }
+            else if (_musicTimerValue <= 154)
+            {
+                _divingTimer.MaxTimerValue = 1.3f;
+            }
+            else if (_musicTimerValue <= 175)
+            {
+                _divingTimer.MaxTimerValue = 0.7f;
+            }
+            else if (_musicTimerValue <= 195)
+            {
+                _divingTimer.MaxTimerValue = 0.6f;
+            }
+            else if (_musicTimerValue <= 242)
+            {
+                _divingTimer.MaxTimerValue = 0.3f;
             }
 
             if (_divingTimer.MaxTimerValue < 0.3)

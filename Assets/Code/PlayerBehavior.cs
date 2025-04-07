@@ -16,9 +16,9 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private GameObject _guiPanel;
     [SerializeField] private TMP_Text _scoreValueText;
     [SerializeField] public TMP_Text _bonusScoreText;
-    [SerializeField] private Image _threedHpImage;
-    [SerializeField] private Image _twoHpImage;
-    [SerializeField] private Image _lastHpImage;
+    [SerializeField] private GameObject _threedHpImage;
+    [SerializeField] private GameObject _twoHpImage;
+    [SerializeField] private GameObject _lastHpImage;
 
     public int Hp;
     public int Score;
@@ -54,13 +54,13 @@ public class PlayerBehavior : MonoBehaviour
         switch (_currentHp)
         {
             case 0:
-                _lastHpImage.enabled = false; 
+                _lastHpImage.GetComponent<Animator>().enabled = true;
                 break;
             case 1:
-                _twoHpImage.enabled = false;
+                _twoHpImage.GetComponent<Animator>().enabled = true;
                 break;
             case 2:
-                _threedHpImage.enabled = false;
+                _threedHpImage.GetComponent<Animator>().enabled = true;
                 break;
              default:
                 break;
@@ -91,7 +91,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        _scoreValueText.text = $"Score:{Score}";
+        _scoreValueText.text = $"Score: {Score}";
     }
 
     private void UpdateBonusScoreText()

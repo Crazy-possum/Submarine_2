@@ -82,9 +82,9 @@ public class SpawnController : MonoBehaviour
         Vector2 position = Vector2.zero;
 
         System.Random randomForGroup = new System.Random();
-        int SpawnChance = randomForGroup.Next(0, 9);
+        int SpawnChance = randomForGroup.Next(1, 100);
 
-        if (SpawnChance < 7)
+        if (SpawnChance < 75)
         {
             _transformSercher = _groupGameObject.GetComponent<TransformSercher>();
 
