@@ -9,6 +9,7 @@ public class SpawnController : MonoBehaviour
 {
     [SerializeField] private PointsViewer _pointsViewer;
     [SerializeField] private PlayerBehavior _playerBehavior;
+    [SerializeField] private SignalController _signalController;
     [SerializeField] private Transform _rootTransform;
     [SerializeField] private Transform _objectRootTransform;
     [SerializeField] private GameObject _pointsGroup;
@@ -18,6 +19,7 @@ public class SpawnController : MonoBehaviour
     public List<Transform> PointsForGroupTransform;
     public Vector2 SpawnPositionsVector;
     public GameObject Object;
+    public GameObject SpriteGameObject;
 
     private TransformSercher _transformSercher;
     private GameObject _groupGameObject;
@@ -85,14 +87,20 @@ public class SpawnController : MonoBehaviour
             {
                 GameObject sceneGObject = GameObject.Instantiate(_obstacle, SpawnPositionsVector, Quaternion.identity, _groupGameObject.transform);
                 Object = sceneGObject;
+                SpriteGameObject = Object.GetComponentInChildren<SpriteRenderer>().gameObject;
+                //SpriteGameObject.SetActive(false);
             }
             else
             {
                 GameObject sceneGObject = GameObject.Instantiate(_bonus, SpawnPositionsVector, Quaternion.identity, _groupGameObject.transform);
                 Object = sceneGObject;
+                SpriteGameObject = Object.GetComponentInChildren<SpriteRenderer>().gameObject;
+               // SpriteGameObject.SetActive(false);
             }
 
             Object.GetComponent<ObjectBehavior>().PlayerBehavior = _playerBehavior;
+            Object.GetComponent<ObjectBehavior>().SignalController = _signalController;
+            _playerBehavior._bonusScoreText.gameObject.SetActive(false);
         }
 
         SpawnPositionsVector = Vector2.zero;

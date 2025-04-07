@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PointsViewer _pointsViewer;
+    [SerializeField] private SpriteRenderer _playerSpriteRenderer;
     public bool IsMoveAvalible;
     private Action _onPlayerEnterTrigger;
 
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gameObject.transform.position.x != 5)
         {
+            _playerSpriteRenderer.flipX = true;
             gameObject.transform.position = new Vector2(transform.position.x + 2.5f, transform.position.y);
         }      
     }
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gameObject.transform.position.x != -5)
         {
+            _playerSpriteRenderer.flipX = false;
             gameObject.transform.position = new Vector2(transform.position.x - 2.5f, transform.position.y);
         }
     }

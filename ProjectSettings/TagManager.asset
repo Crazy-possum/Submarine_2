@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BonusObject
   - ObstacleObject
+  - Trigger
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
+  - Signal
+  - Interact
   - 
   - 
   - 

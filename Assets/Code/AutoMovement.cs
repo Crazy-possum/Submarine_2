@@ -30,7 +30,7 @@ public class AutoMovement : MonoBehaviour
         _timerSlider.value = _sliderValue;
         _timerSlider.maxValue = _sliderMaxValue;
         _divingTimer = _divingTimerObject.GetComponent<Timer>();
-        _divingTimer.MaxTimerValue = 2;
+        _divingTimer.MaxTimerValue = 1.8f;
         _divingTimer.StartCountdown();
     }
 
@@ -88,10 +88,19 @@ public class AutoMovement : MonoBehaviour
             _spawnController.SpawnObjects();
             _playerBehavior.UpdateScore();
 
-            if (_divingTimer.MaxTimerValue > 0.3)
+            if (_divingTimer.MaxTimerValue > 1)
             {
                 _divingTimer.MaxTimerValue -= 0.03f;
             }
+            else if (_divingTimer.MaxTimerValue > 0.6)
+            {
+                _divingTimer.MaxTimerValue -= 0.01f;
+            }
+            else if (_divingTimer.MaxTimerValue > 0.3)
+            {
+                _divingTimer.MaxTimerValue -= 0.008f;
+            }
+
             if (_divingTimer.MaxTimerValue < 0.3)
             {
                 _divingTimer.MaxTimerValue = 0.3f;

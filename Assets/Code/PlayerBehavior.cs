@@ -15,7 +15,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private GameObject _objectGroups;
     [SerializeField] private GameObject _guiPanel;
     [SerializeField] private TMP_Text _scoreValueText;
-    [SerializeField] private TMP_Text _bonusScoreText;
+    [SerializeField] public TMP_Text _bonusScoreText;
     [SerializeField] private Image _threedHpImage;
     [SerializeField] private Image _twoHpImage;
     [SerializeField] private Image _lastHpImage;
@@ -34,9 +34,6 @@ public class PlayerBehavior : MonoBehaviour
         _currentHp = 3;
 
         UpdateScoreText();
-
-        _popUpTimer = _popUpTimerObject.GetComponent<Timer>();
-        _popUpTimer.MaxTimerValue = 1;
     }
     private void Update()
     {
@@ -89,27 +86,18 @@ public class PlayerBehavior : MonoBehaviour
     {
         Score += 25;
         UpdateScoreText();
+        UpdateBonusScoreText();
     }    
 
     private void UpdateScoreText()
     {
         _scoreValueText.text = $"Score:{Score}";
-       //UpdateBonusScoreText();
     }
 
     private void UpdateBonusScoreText()
     {
-        _bonusScoreText.enabled = true;
+        _bonusScoreText.gameObject.SetActive(true);
         _bonusScoreText.text = "+ 25";
-
-        _popUpTimer.StartCountdown();
-        _maxTimerValue = _popUpTimer.ReachingTimerMaxValue;
-
-        if (_maxTimerValue)
-        {
-            _bonusScoreText.enabled = false;
-            _popUpTimer.StopCountdown();
-        }
     }
 }
 

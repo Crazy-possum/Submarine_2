@@ -42,9 +42,9 @@ public class ResultePanel : MonoBehaviour
         _yourScoreText.text = $"Your score:{_playerBehavior.Score}";
         _bestScoreText.text = $"The best score: {PlayerPrefs.GetInt("BestScore")}";
 
-        if (_bestScore < _playerBehavior.Score)
+        if (PlayerPrefs.GetInt("BestScore") < _playerBehavior.Score)
         {
-            _newRecordText.enabled = true;
+            _newRecordText.gameObject.SetActive(true);
             _bestScore = _playerBehavior.Score;
             PlayerPrefs.SetInt("BestScore", _bestScore);
         }
