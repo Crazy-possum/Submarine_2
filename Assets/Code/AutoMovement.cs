@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class AutoMovement : MonoBehaviour
 {
     [SerializeField] private PointsViewer _pointsViewer;
+    [SerializeField] private PlayerBehavior _playerBehavior;
     [SerializeField] private SpawnController _spawnController;
     [SerializeField] private PlayerController _playerController;
 

@@ -17,15 +17,6 @@ public class PlayerController : MonoBehaviour
         PlayerMovement();
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            OnPlayerEnterTrigger?.Invoke();
-            Debug.Log(1);
-        }
-    }
-
     private void PlayerMovement()
     {
         if (IsMoveAvalible)

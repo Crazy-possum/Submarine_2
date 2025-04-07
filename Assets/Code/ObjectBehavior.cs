@@ -1,17 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectBehavior : MonoBehaviour
 {
-    //[SerializeField] private SpawnController _spawnController;
-    //[SerializeField] private GameObject _gameObject;
+    private PlayerBehavior _playerBehavior;
+    private Action onCollidePlayer;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public Action OnCollidePlayer { get => onCollidePlayer; set => onCollidePlayer = value; }
+    public PlayerBehavior PlayerBehavior { get => _playerBehavior; set => _playerBehavior = value; }
+
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log(1);
+            _playerBehavior.LoseHp();
         }
     }
 }

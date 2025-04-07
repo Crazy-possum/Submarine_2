@@ -8,6 +8,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class SpawnController : MonoBehaviour
 {
     [SerializeField] private PointsViewer _pointsViewer;
+    [SerializeField] private PlayerBehavior _playerBehavior;
     [SerializeField] private Transform _rootTransform;
     [SerializeField] private Transform _objectRootTransform;
     [SerializeField] private GameObject _pointsGroup;
@@ -77,9 +78,8 @@ public class SpawnController : MonoBehaviour
         if (SpawnPositionsVector != Vector2.zero)
         {
             GameObject sceneGObject = GameObject.Instantiate(_object, SpawnPositionsVector, Quaternion.identity, _groupGameObject.transform);
-            GameObject pointsGroup = sceneGObject.GetComponent<GameObject>();
-
-            Object = pointsGroup.gameObject;
+            Object = sceneGObject;
+            Object.GetComponent<ObjectBehavior>().PlayerBehavior = _playerBehavior;
         }
 
         SpawnPositionsVector = Vector2.zero;
