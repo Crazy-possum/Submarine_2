@@ -6,16 +6,21 @@ using UnityEngine;
 public class ObjectBehavior : MonoBehaviour
 {
     private PlayerBehavior _playerBehavior;
-    private Action onCollidePlayer;
 
-    public Action OnCollidePlayer { get => onCollidePlayer; set => onCollidePlayer = value; }
     public PlayerBehavior PlayerBehavior { get => _playerBehavior; set => _playerBehavior = value; }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            _playerBehavior.LoseHp();
+            if (gameObject.tag == "BonusObject")
+            {
+                _playerBehavior.AddBonusScore();
+            }
+            else if (gameObject.tag == "ObstacleObject")
+            {
+                _playerBehavior.LoseHp();
+            }
         }
     }
 }

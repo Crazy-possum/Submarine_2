@@ -12,7 +12,8 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private Transform _rootTransform;
     [SerializeField] private Transform _objectRootTransform;
     [SerializeField] private GameObject _pointsGroup;
-    [SerializeField] private GameObject _object;
+    [SerializeField] private GameObject _obstacle;
+    [SerializeField] private GameObject _bonus;
 
     public List<Transform> PointsForGroupTransform;
     public Vector2 SpawnPositionsVector;
@@ -77,8 +78,20 @@ public class SpawnController : MonoBehaviour
         
         if (SpawnPositionsVector != Vector2.zero)
         {
-            GameObject sceneGObject = GameObject.Instantiate(_object, SpawnPositionsVector, Quaternion.identity, _groupGameObject.transform);
-            Object = sceneGObject;
+            System.Random objectTypeandom = new System.Random();
+            int objectSpawnChance = objectTypeandom.Next(0, 9);
+
+            if (objectSpawnChance < 6)
+            {
+                GameObject sceneGObject = GameObject.Instantiate(_obstacle, SpawnPositionsVector, Quaternion.identity, _groupGameObject.transform);
+                Object = sceneGObject;
+            }
+            else
+            {
+                GameObject sceneGObject = GameObject.Instantiate(_bonus, SpawnPositionsVector, Quaternion.identity, _groupGameObject.transform);
+                Object = sceneGObject;
+            }
+
             Object.GetComponent<ObjectBehavior>().PlayerBehavior = _playerBehavior;
         }
 

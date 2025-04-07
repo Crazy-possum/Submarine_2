@@ -16,6 +16,7 @@ public class AutoMovement : MonoBehaviour
     [SerializeField] private Slider _timerSlider;
     private Timer _divingTimer;
     private bool _maxTimerValue;
+    private float _sliderMaxValue;
     private float _sliderValue;
 
     private List<PointsGroup> _pointsGroups;
@@ -27,6 +28,7 @@ public class AutoMovement : MonoBehaviour
         _pointsForGroupTransforms = _spawnController.PointsForGroupTransform;
 
         _timerSlider.value = _sliderValue;
+        _timerSlider.maxValue = _sliderMaxValue;
         _divingTimer = _divingTimerObject.GetComponent<Timer>();
         _divingTimer.MaxTimerValue = 2;
         _divingTimer.StartCountdown();
@@ -35,7 +37,10 @@ public class AutoMovement : MonoBehaviour
     private void FixedUpdate()
     {
         _sliderValue = _divingTimer.TimerCurrentTime;
+        _sliderMaxValue = _divingTimer.MaxTimerValue;
         _timerSlider.value = _sliderValue;
+        _timerSlider.maxValue = _sliderMaxValue;
+
         _maxTimerValue = _divingTimer.ReachingTimerMaxValue;
         _pointsGroups = PointsViewer.Instance.Points;
 
@@ -81,10 +86,25 @@ public class AutoMovement : MonoBehaviour
             }
 
             _spawnController.SpawnObjects();
+            _playerBehavior.UpdateScore();
 
-            _divingTimer.StartCountdown();
+            if (_divingTimer.MaxTimerValue > 0.3)
+            {
+                _divingTimer.MaxTimerValue -= 0.03f;
+            }
+            if (_divingTimer.MaxTimerValue < 0.3)
+            {
+                _divingTimer.MaxTimerValue = 0.3f;
+            }
+
+                _divingTimer.StartCountdown();
             _playerController.IsMoveAvalible = true;
         }
 
+    }
+
+    public void TimerDeactivate()
+    {
+        _divingTimer.StopCountdown();
     }
 }
