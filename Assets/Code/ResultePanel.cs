@@ -29,7 +29,6 @@ public class ResultePanel : MonoBehaviour
     public void OpenResultPanel()
     {
         _resulePanel.SetActive(true);
-        _bestScore = 0;
         SetData();
     }
 
@@ -41,12 +40,13 @@ public class ResultePanel : MonoBehaviour
     private void SetData()
     {
         _yourScoreText.text = $"Your score:{_playerBehavior.Score}";
-        _bestScoreText.text = $"The best score: {_bestScore}";
+        _bestScoreText.text = $"The best score: {PlayerPrefs.GetInt("BestScore")}";
 
         if (_bestScore < _playerBehavior.Score)
         {
             _newRecordText.enabled = true;
             _bestScore = _playerBehavior.Score;
+            PlayerPrefs.SetInt("BestScore", _bestScore);
         }
     }
 
