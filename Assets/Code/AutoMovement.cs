@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 public class AutoMovement : MonoBehaviour
 {
     [SerializeField] private PointsViewer _pointsViewer;
+    [SerializeField] private MetreController _metreController;
     [SerializeField] private PlayerBehavior _playerBehavior;
     [SerializeField] private SpawnController _spawnController;
     [SerializeField] private PlayerController _playerController;
@@ -15,6 +17,7 @@ public class AutoMovement : MonoBehaviour
     [SerializeField] private GameObject _divingTimerObject;
     [SerializeField] private SpriteRenderer _darkerSpriteRenderer;
     [SerializeField] private Slider _timerSlider;
+    private TMP_Text _metrText;
     private Timer _divingTimer;
     private bool _maxTimerValue;
     private float _sliderMaxValue;
@@ -78,6 +81,10 @@ public class AutoMovement : MonoBehaviour
                     Destroy(groups.gameObject);
                     groupsToRemove.Add(groups);
                 }
+
+
+                _metrText = groups.GetComponentInChildren<TMP_Text>();
+                _metrText.transform.position = new Vector2(groups.transform.position.x - 500, groups.transform.position.y);
             }
 
             _spawnController.SpawnPointsGroup();
@@ -117,6 +124,8 @@ public class AutoMovement : MonoBehaviour
             {
                 _divingTimer.MaxTimerValue = 0.3f;
             }
+
+            _metreController.UpdateMetreText();
 
                 _divingTimer.StartCountdown();
             _playerController.IsMoveAvalible = true;

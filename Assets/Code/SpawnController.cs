@@ -32,7 +32,7 @@ public class SpawnController : MonoBehaviour
     private TransformSercher _transformSercher;
     private GameObject _groupGameObject;
     private SpriteRenderer _spriteRenderer;
-    private TMP_Text _MetrText;
+    private TMP_Text _metrText;
 
 
     public void SpawnPointsGroup()
@@ -69,8 +69,8 @@ public class SpawnController : MonoBehaviour
         GameObject gObject = GameObject.Instantiate(_pointsGroup, PointsForGroupTransform[5].position, Quaternion.identity, _rootTransform);
         PointsGroup pointsGroup = gObject.GetComponent<PointsGroup>();
 
-        _MetrText = pointsGroup.GetComponentInChildren<TMP_Text>();
-        _MetrText.transform.position = new Vector2 (pointsGroup.transform.position.x - 500, pointsGroup.transform.position.y);
+        _metrText = pointsGroup.GetComponentInChildren<TMP_Text>();
+        _metrText.transform.position = new Vector2 (pointsGroup.transform.position.x - 500, pointsGroup.transform.position.y);
 
         _groupGameObject = pointsGroup.gameObject;
 
