@@ -13,11 +13,13 @@ public class AutoMovement : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
 
     [SerializeField] private GameObject _divingTimerObject;
+    [SerializeField] private SpriteRenderer _darkerSpriteRenderer;
     [SerializeField] private Slider _timerSlider;
     private Timer _divingTimer;
     private bool _maxTimerValue;
     private float _sliderMaxValue;
     private float _sliderValue;
+    private float _transperency = 0.4f;
 
     private List<PointsGroup> _pointsGroups;
     private List<Transform> _pointsForGroupTransforms;
@@ -88,6 +90,16 @@ public class AutoMovement : MonoBehaviour
             _spawnController.SpawnObjects();
             _playerBehavior.UpdateScore();
 
+            _transperency += 0.002f;
+            if (_transperency > 0.8f)
+            {
+                _transperency = 0.8f;
+            }
+
+            Color newColor = new Color(_darkerSpriteRenderer.color.r, _darkerSpriteRenderer.color.g, _darkerSpriteRenderer.color.b, _transperency);
+            _darkerSpriteRenderer.color = newColor;
+            
+            
             if (_divingTimer.MaxTimerValue > 1)
             {
                 _divingTimer.MaxTimerValue -= 0.03f;

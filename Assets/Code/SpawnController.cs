@@ -16,6 +16,13 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private GameObject _obstacle;
     [SerializeField] private GameObject _bonus;
 
+    [SerializeField] private Sprite _bgGame1;
+    [SerializeField] private Sprite _bgGame2;
+    [SerializeField] private Sprite _bgGame3;
+    [SerializeField] private Sprite _bgGame4;
+    [SerializeField] private Sprite _bgGame5;
+    [SerializeField] private Sprite _bgGame6;
+
     public List<Transform> PointsForGroupTransform;
     public Vector2 SpawnPositionsVector;
     public GameObject Object;
@@ -23,10 +30,40 @@ public class SpawnController : MonoBehaviour
 
     private TransformSercher _transformSercher;
     private GameObject _groupGameObject;
+    private SpriteRenderer _spriteRenderer;
 
 
     public void SpawnPointsGroup()
     {
+        _spriteRenderer = _pointsGroup.GetComponentInChildren<SpriteRenderer>();
+
+        System.Random random = new System.Random();
+        int randomInt = random.Next(0, 5);
+
+        switch (randomInt)
+        {
+            case 0:
+                 _spriteRenderer.sprite = _bgGame1;
+                break;
+            case 1:
+                _spriteRenderer.sprite = _bgGame2;
+                break;
+            case 2:
+                _spriteRenderer.sprite = _bgGame3;
+                break;
+            case 3:
+                _spriteRenderer.sprite = _bgGame4;
+                break;
+            case 4:
+                _spriteRenderer.sprite = _bgGame5;
+                break;
+            case 5:
+                _spriteRenderer.sprite = _bgGame6;
+                break;
+            default:
+                break;
+        }
+
         GameObject gObject = GameObject.Instantiate(_pointsGroup, PointsForGroupTransform[5].position, Quaternion.identity, _rootTransform);
         PointsGroup pointsGroup = gObject.GetComponent<PointsGroup>();
 

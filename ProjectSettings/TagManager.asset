@@ -47,3 +47,9 @@ TagManager:
   - name: New Layer 1
     uniqueID: 3604838379
     locked: 0
+  - name: Player
+    uniqueID: 3650790163
+    locked: 0
+  - name: Canvas
+    uniqueID: 1862954415
+    locked: 0
