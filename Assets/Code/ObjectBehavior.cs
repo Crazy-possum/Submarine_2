@@ -27,10 +27,12 @@ public class ObjectBehavior : MonoBehaviour
             if (gameObject.tag == "BonusObject")
             {
                 _playerBehavior.AddBonusScore();
+                _objectSpriteRenderer.enabled = false;
             }
             else if (gameObject.tag == "ObstacleObject")
             {
                 _playerBehavior.LoseHp();
+                _objectSpriteRenderer.enabled = false;
             }
         }
         else if (collision.gameObject.tag == "Trigger")

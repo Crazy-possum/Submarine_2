@@ -18,10 +18,10 @@ public class SignalController : MonoBehaviour
 
     public void PlayBonusSound()
     {
-        _audioSource.PlayOneShot((AudioClip)Resources.Load("Audio/Sound_1"));
+        _audioSource.PlayOneShot((AudioClip)Resources.Load("Audio/BonusSound"));
     }   
     public void PlayObstacleSound()
     {
-        _audioSource.PlayOneShot((AudioClip)Resources.Load("Audio/Sound_2"));
+        _audioSource.PlayOneShot((AudioClip)Resources.Load("Audio/ObstacleSound"));
     }
 }
