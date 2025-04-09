@@ -10,15 +10,19 @@ using System;
 public class ResultePanel : MonoBehaviour
 {
     [SerializeField] private PlayerBehavior _playerBehavior;
+    [SerializeField] private MetreController _metreController;
     [SerializeField] private GameObject _resulePanel;
 
     [SerializeField] private TMP_Text _newRecordText;
     [SerializeField] private TMP_Text _yourScoreText;
+    [SerializeField] private TMP_Text _yourMetreScore;
     [SerializeField] private TMP_Text _bestScoreText;
+    [SerializeField] private TMP_Text _bestMetreText;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _mainMenuButton;
 
     private int _bestScore;
+    private int _bestMetre;
 
     private void Start()
     {
@@ -39,14 +43,22 @@ public class ResultePanel : MonoBehaviour
 
     private void SetData()
     {
-        _yourScoreText.text = $"Your score:{_playerBehavior.Score}";
+        _yourScoreText.text = $"Your score: {_playerBehavior.Score}";
+        _yourMetreScore.text = $"You reached: {_metreController.MetreRecord} m";
         _bestScoreText.text = $"The best score: {PlayerPrefs.GetInt("BestScore")}";
+        _bestMetreText.text = $"The best footage: {PlayerPrefs.GetInt("BestFootage")} m";
 
         if (PlayerPrefs.GetInt("BestScore") < _playerBehavior.Score)
         {
             _newRecordText.gameObject.SetActive(true);
             _bestScore = _playerBehavior.Score;
             PlayerPrefs.SetInt("BestScore", _bestScore);
+        }
+        if (PlayerPrefs.GetInt("BestFootage") < _metreController.MetreRecord)
+        {
+            _newRecordText.gameObject.SetActive(true);
+            _bestMetre = _metreController.MetreRecord;
+            PlayerPrefs.SetInt("BestFootage", _bestMetre);
         }
     }
 

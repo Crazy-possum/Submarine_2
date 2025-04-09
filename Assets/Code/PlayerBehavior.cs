@@ -10,7 +10,6 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private AutoMovement _autoMovement;
 
     [SerializeField] private ResultePanel _resulePanel;
-    [SerializeField] private GameObject _popUpTimerObject;
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _objectGroups;
     [SerializeField] private GameObject _guiPanel;
@@ -23,8 +22,6 @@ public class PlayerBehavior : MonoBehaviour
     public int Hp;
     public int Score;
 
-    private Timer _popUpTimer;
-    private bool _maxTimerValue;
     private int _currentHp;
 
     private void Start()

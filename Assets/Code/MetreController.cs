@@ -10,6 +10,8 @@ public class MetreController : MonoBehaviour
     [SerializeField] private TMP_Text _thirdMetrePosition;
     [SerializeField] private TMP_Text _fouthMetrePosition;
 
+    public int MetreRecord;
+
     private int _firstMetreValue;
     private int _secondMetreValue;
     private int _thirdMetreValue;
@@ -31,6 +33,7 @@ public class MetreController : MonoBehaviour
         _secondMetrePosition.text = $"{_secondMetreValue} m";
         _thirdMetreValue += 1;
         _thirdMetrePosition.text = $"{_thirdMetreValue} m";
+        MetreRecord = _thirdMetreValue;
         _fouthMetreValue += 1;
         _fouthMetrePosition.text = $"{_fouthMetreValue} m";
     }

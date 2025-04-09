@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private TMP_Text _bestScoreText;
+    [SerializeField] private TMP_Text _bestMetreText;
     [SerializeField] private GameObject _tutorial;
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _tutorialButton;
@@ -22,6 +23,8 @@ public class MainMenu : MonoBehaviour
     private void ShowBestScore()
     {
         _bestScoreText.text = $"The best score: {PlayerPrefs.GetInt("BestScore")}";
+        _bestMetreText.text = $"The best footage: {PlayerPrefs.GetInt("BestFootage")} m";
+
     }
 
     private void TutorialButton()
