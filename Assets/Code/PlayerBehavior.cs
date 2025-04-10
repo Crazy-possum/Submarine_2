@@ -8,8 +8,9 @@ using UnityEngine.UI;
 public class PlayerBehavior : MonoBehaviour
 {
     [SerializeField] private AutoMovement _autoMovement;
-
     [SerializeField] private ResultePanel _resulePanel;
+    [SerializeField] private TutorialController _tutorialController;
+
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _objectGroups;
     [SerializeField] private GameObject _guiPanel;
@@ -44,6 +45,11 @@ public class PlayerBehavior : MonoBehaviour
     {
         _currentHp -= 1;
         UpdateHpImage();
+
+        if (PlayerPrefs.GetInt("TutorialStage") != 2)
+        {
+            _tutorialController.HpLoseTutorial();
+        }
     }
 
     private void UpdateHpImage()

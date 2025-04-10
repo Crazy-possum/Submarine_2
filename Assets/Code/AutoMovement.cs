@@ -18,7 +18,6 @@ public class AutoMovement : MonoBehaviour
     [SerializeField] private GameObject _divingTimerObject;
     [SerializeField] private SpriteRenderer _darkerSpriteRenderer;
     [SerializeField] private Slider _timerSlider;
-    private TMP_Text _metrText;
     private Timer _divingTimer;
     private bool _maxTimerValue;
     private float _musicTimerValue;
@@ -85,10 +84,6 @@ public class AutoMovement : MonoBehaviour
                     Destroy(groups.gameObject);
                     groupsToRemove.Add(groups);
                 }
-
-
-                _metrText = groups.GetComponentInChildren<TMP_Text>();
-                _metrText.transform.position = new Vector2(groups.transform.position.x - 500, groups.transform.position.y);
             }
 
             _spawnController.SpawnPointsGroup();
@@ -101,10 +96,10 @@ public class AutoMovement : MonoBehaviour
             _spawnController.SpawnObjects();
             _playerBehavior.UpdateScore();
 
-            _transperency += 0.002f;
-            if (_transperency > 0.8f)
+            _transperency += 0.003f;
+            if (_transperency > 0.9f)
             {
-                _transperency = 0.8f;
+                _transperency = 0.9f;
             }
 
             Color newColor = new Color(_darkerSpriteRenderer.color.r, _darkerSpriteRenderer.color.g, _darkerSpriteRenderer.color.b, _transperency);
@@ -143,7 +138,7 @@ public class AutoMovement : MonoBehaviour
             {
                 _divingTimer.MaxTimerValue = 0.7f;
             }
-            else if (_musicTimerValue <= 195)
+            else if (_musicTimerValue <= 200)
             {
                 _divingTimer.MaxTimerValue = 0.6f;
             }

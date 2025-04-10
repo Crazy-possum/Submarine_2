@@ -24,6 +24,13 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private Sprite _bgGame5;
     [SerializeField] private Sprite _bgGame6;
 
+    [SerializeField] private Sprite _wall1;
+    [SerializeField] private Sprite _wall2;
+    [SerializeField] private Sprite _wall3;
+    [SerializeField] private Sprite _wall4;
+    [SerializeField] private Sprite _wall5;
+    [SerializeField] private Sprite _wall6;
+
     public List<Transform> PointsForGroupTransform;
     public Vector2 SpawnPositionsVector;
     public GameObject Object;
@@ -31,13 +38,15 @@ public class SpawnController : MonoBehaviour
 
     private TransformSercher _transformSercher;
     private GameObject _groupGameObject;
-    private SpriteRenderer _spriteRenderer;
-    private TMP_Text _metrText;
-
+    private SpriteRenderer _bgSpriteRenderer;
+    private SpriteRenderer _leftWallSpriteRenderer;
+    private SpriteRenderer _rightWallSpriteRenderer;
 
     public void SpawnPointsGroup()
     {
-        _spriteRenderer = _pointsGroup.GetComponentInChildren<SpriteRenderer>();
+        _bgSpriteRenderer = _pointsGroup.GetComponentInChildren<ObjectViewer>().BgSpriteRenderer;
+        _leftWallSpriteRenderer = _pointsGroup.GetComponentInChildren<ObjectViewer>().LeftWallSpriteRenderer;
+        _rightWallSpriteRenderer = _pointsGroup.GetComponentInChildren<ObjectViewer>().RightWallSpriteRenderer;
 
         System.Random random = new System.Random();
         int randomInt = random.Next(0, 5);
@@ -45,22 +54,82 @@ public class SpawnController : MonoBehaviour
         switch (randomInt)
         {
             case 0:
-                 _spriteRenderer.sprite = _bgGame1;
+                 _bgSpriteRenderer.sprite = _bgGame1;
                 break;
             case 1:
-                _spriteRenderer.sprite = _bgGame2;
+                _bgSpriteRenderer.sprite = _bgGame2;
                 break;
             case 2:
-                _spriteRenderer.sprite = _bgGame3;
+                _bgSpriteRenderer.sprite = _bgGame3;
                 break;
             case 3:
-                _spriteRenderer.sprite = _bgGame4;
+                _bgSpriteRenderer.sprite = _bgGame4;
                 break;
             case 4:
-                _spriteRenderer.sprite = _bgGame5;
+                _bgSpriteRenderer.sprite = _bgGame5;
                 break;
             case 5:
-                _spriteRenderer.sprite = _bgGame6;
+                _bgSpriteRenderer.sprite = _bgGame6;
+                break;
+            default:
+                break;
+        }
+
+        System.Random LWallRandom = new System.Random();
+        int LWallRandomInt = LWallRandom.Next(0, 5);
+
+        switch (LWallRandomInt)
+        {
+            case 0:
+                _leftWallSpriteRenderer.sprite = _wall1;
+                break;
+            case 1:
+                _leftWallSpriteRenderer.sprite = _wall2;
+                break;
+            case 2:
+                _leftWallSpriteRenderer.sprite = _wall3;
+                break;
+            case 3:
+                _leftWallSpriteRenderer.sprite = _wall4;
+                break;
+            case 4:
+                _leftWallSpriteRenderer.sprite = _wall5;
+                break;
+            case 5:
+                _leftWallSpriteRenderer.sprite = _wall6;
+                break;
+            default:
+                break;
+        }
+
+        System.Random RWallRandom = new System.Random();
+        int RWallRandomInt = RWallRandom.Next(0, 5);
+
+        switch (RWallRandomInt)
+        {
+            case 0:
+                _rightWallSpriteRenderer.sprite = _wall1;
+                _rightWallSpriteRenderer.flipX = true;
+                break;
+            case 1:
+                _rightWallSpriteRenderer.sprite = _wall2;
+                _rightWallSpriteRenderer.flipX = true;
+                break;
+            case 2:
+                _rightWallSpriteRenderer.sprite = _wall3;
+                _rightWallSpriteRenderer.flipX = true;
+                break;
+            case 3:
+                _rightWallSpriteRenderer.sprite = _wall4;
+                _rightWallSpriteRenderer.flipX = true;
+                break;
+            case 4:
+                _rightWallSpriteRenderer.sprite = _wall5;
+                _rightWallSpriteRenderer.flipX = true;
+                break;
+            case 5:
+                _rightWallSpriteRenderer.sprite = _wall6;
+                _rightWallSpriteRenderer.flipX = true;
                 break;
             default:
                 break;
@@ -68,9 +137,6 @@ public class SpawnController : MonoBehaviour
 
         GameObject gObject = GameObject.Instantiate(_pointsGroup, PointsForGroupTransform[5].position, Quaternion.identity, _rootTransform);
         PointsGroup pointsGroup = gObject.GetComponent<PointsGroup>();
-
-        _metrText = pointsGroup.GetComponentInChildren<TMP_Text>();
-        _metrText.transform.position = new Vector2 (pointsGroup.transform.position.x - 500, pointsGroup.transform.position.y);
 
         _groupGameObject = pointsGroup.gameObject;
 

@@ -12,29 +12,24 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _tutorial;
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _tutorialButton;
+    [SerializeField] private Button _clearProgress;
 
     private void Start()
     {
         ShowBestScore();
         PlayGame();
-        TutorialButton();
+        ClearProgress();
     }
 
     private void ShowBestScore()
     {
         _bestScoreText.text = $"The best score: {PlayerPrefs.GetInt("BestScore")}";
         _bestMetreText.text = $"The best footage: {PlayerPrefs.GetInt("BestFootage")} m";
-
-    }
-
-    private void TutorialButton()
-    {
-        _tutorialButton.onClick.AddListener(OpenTutorial);
     }
    
     private void PlayGame()
     {
-        _playButton.onClick.AddListener(LoadPGameScene);
+        _tutorialButton.onClick.AddListener(LoadPGameScene);
     }
 
     private void LoadPGameScene()
@@ -42,8 +37,14 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    private void OpenTutorial()
+    private void ClearProgress()
     {
-        _tutorial.SetActive(true);
+        _clearProgress.onClick.AddListener(RemoveALL);
+    }
+
+    private void RemoveALL()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(0);
     }
 }
