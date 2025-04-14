@@ -2071,7 +2071,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Submarine
+  m_text: SignalBit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0928c7a04c2eea4f9a1aa72ae55f7f3, type: 2}
   m_sharedMaterial: {fileID: 3671986830602824039, guid: b0928c7a04c2eea4f9a1aa72ae55f7f3, type: 2}

@@ -3176,8 +3176,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281545648
+  m_fontColor: {r: 0.6886792, g: 0.19815768, b: 0.19815768, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3562,7 +3562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yellow Red circles indicate bonus points. Catch them!
+  m_text: Yellow circles indicate bonus points. Catch them!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0928c7a04c2eea4f9a1aa72ae55f7f3, type: 2}
   m_sharedMaterial: {fileID: 3671986830602824039, guid: b0928c7a04c2eea4f9a1aa72ae55f7f3, type: 2}
@@ -3571,8 +3571,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283219907
+  m_fontColor: {r: 0.764151, g: 0.7495394, b: 0.2991723, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9675,8 +9675,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -480, y: 170}
+  m_AnchoredPosition: {x: 0, y: 30}
+  m_SizeDelta: {x: -109.999985, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2017234022
 MonoBehaviour:
@@ -9699,7 +9699,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: You can only move horizontally, once per timer tick. Use the A and D keys
-    to control the submarine
+    to control the submarine. Oor click on the left and right sides of the screen
+    for the mobile version
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0928c7a04c2eea4f9a1aa72ae55f7f3, type: 2}
   m_sharedMaterial: {fileID: 3671986830602824039, guid: b0928c7a04c2eea4f9a1aa72ae55f7f3, type: 2}
