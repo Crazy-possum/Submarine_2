@@ -27,14 +27,29 @@ public class MetreController : MonoBehaviour
 
     public void UpdateMetreText()
     {
-        _firstMetreValue += 1;
-        _firstMetrePosition.text = $"{_firstMetreValue} m";
-        _secondMetreValue += 1;
-        _secondMetrePosition.text = $"{_secondMetreValue} m";
-        _thirdMetreValue += 1;
-        _thirdMetrePosition.text = $"{_thirdMetreValue} m";
-        MetreRecord = _thirdMetreValue;
-        _fouthMetreValue += 1;
-        _fouthMetrePosition.text = $"{_fouthMetreValue} m";
+        if (PlayerPrefs.GetInt("isRussian") == 1)
+        {
+            _firstMetreValue += 1;
+            _firstMetrePosition.text = $"{_firstMetreValue} ì";
+            _secondMetreValue += 1;
+            _secondMetrePosition.text = $"{_secondMetreValue} ì";
+            _thirdMetreValue += 1;
+            _thirdMetrePosition.text = $"{_thirdMetreValue} ì";
+            MetreRecord = _thirdMetreValue;
+            _fouthMetreValue += 1;
+            _fouthMetrePosition.text = $"{_fouthMetreValue} ì";
+        }
+        else
+        {
+            _firstMetreValue += 1;
+            _firstMetrePosition.text = $"{_firstMetreValue} m";
+            _secondMetreValue += 1;
+            _secondMetrePosition.text = $"{_secondMetreValue} m";
+            _thirdMetreValue += 1;
+            _thirdMetrePosition.text = $"{_thirdMetreValue} m";
+            MetreRecord = _thirdMetreValue;
+            _fouthMetreValue += 1;
+            _fouthMetrePosition.text = $"{_fouthMetreValue} m";
+        }
     }
 }

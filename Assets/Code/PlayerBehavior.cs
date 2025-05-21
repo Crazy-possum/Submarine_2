@@ -94,7 +94,14 @@ public class PlayerBehavior : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        _scoreValueText.text = $"Score: {Score}";
+        if (PlayerPrefs.GetInt("isRussian") == 1)
+        {
+            _scoreValueText.text = $"—чет: {Score}";
+        }
+        else
+        {
+            _scoreValueText.text = $"Score: {Score}";
+        }
     }
 
     private void UpdateBonusScoreText()

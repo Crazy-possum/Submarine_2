@@ -43,10 +43,20 @@ public class ResultePanel : MonoBehaviour
 
     private void SetData()
     {
-        _yourScoreText.text = $"Your score: {_playerBehavior.Score}";
-        _yourMetreScore.text = $"You reached: {_metreController.MetreRecord} m";
-        _bestScoreText.text = $"The best score: {PlayerPrefs.GetInt("BestScore")}";
-        _bestMetreText.text = $"The best footage: {PlayerPrefs.GetInt("BestFootage")} m";
+        if (PlayerPrefs.GetInt("isRussian") == 1)
+        {
+            _yourScoreText.text = $"Ваш счет: {_playerBehavior.Score}";
+            _yourMetreScore.text = $"Вы достигли: {_metreController.MetreRecord} м";
+            _bestScoreText.text = $"Лучший ссчет: {PlayerPrefs.GetInt("BestScore")}";
+            _bestMetreText.text = $"Максимальная глубина: {PlayerPrefs.GetInt("BestFootage")} м";
+        }
+        else
+        {
+            _yourScoreText.text = $"Your score: {_playerBehavior.Score}";
+            _yourMetreScore.text = $"You reached: {_metreController.MetreRecord} m";
+            _bestScoreText.text = $"The best score: {PlayerPrefs.GetInt("BestScore")}";
+            _bestMetreText.text = $"The best footage: {PlayerPrefs.GetInt("BestFootage")} m";
+        }
 
         if (PlayerPrefs.GetInt("BestScore") < _playerBehavior.Score)
         {

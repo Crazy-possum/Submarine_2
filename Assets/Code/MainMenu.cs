@@ -21,10 +21,18 @@ public class MainMenu : MonoBehaviour
         ClearProgress();
     }
 
-    private void ShowBestScore()
+    public void ShowBestScore()
     {
-        _bestScoreText.text = $"The best score: {PlayerPrefs.GetInt("BestScore")}";
-        _bestMetreText.text = $"The best footage: {PlayerPrefs.GetInt("BestFootage")} m";
+        if (PlayerPrefs.GetInt("isRussian") == 1)
+        {
+            _bestScoreText.text = $"Лучший счет: {PlayerPrefs.GetInt("BestScore")}";
+            _bestMetreText.text = $"Максимальное погружение: {PlayerPrefs.GetInt("BestFootage")} м";
+        }
+        else
+        {
+            _bestScoreText.text = $"The best score: {PlayerPrefs.GetInt("BestScore")}";
+            _bestMetreText.text = $"The best footage: {PlayerPrefs.GetInt("BestFootage")} m";
+        }
     }
    
     private void PlayGame()
@@ -44,7 +52,9 @@ public class MainMenu : MonoBehaviour
 
     private void RemoveALL()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("TutorialStage");
+        PlayerPrefs.DeleteKey("TutorialYellowStage");
+        PlayerPrefs.DeleteKey("TutorialRedStage");
         SceneManager.LoadScene(0);
     }
 }
