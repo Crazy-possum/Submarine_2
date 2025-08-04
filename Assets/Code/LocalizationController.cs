@@ -22,6 +22,12 @@ public class LocalizationController : MonoBehaviour
        _ru.onClick.AddListener(ChangeToRussian);
     }
 
+    private void OnDestroy()
+    {
+        _en.onClick.RemoveListener(ChangeToEnglish);
+        _ru.onClick.RemoveListener(ChangeToRussian);
+    }
+
     private void ChangeToEnglish()
     {
         PlayerPrefs.SetInt("isRussian", 0);
